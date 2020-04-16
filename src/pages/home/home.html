@@ -1,17 +1,98 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title><img id="icon_location" src="assets/icon/pin.png"><span id="currentLocation">{{currentLocation}}</span></ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+  <ion-grid id="searchBox">
+    <ion-row>
+      <ion-col col-8>
+        <ion-input placeholder="search"></ion-input>
+      </ion-col>
+      <ion-col col-4>
+        <ion-select placeholder="Category">
+          <ion-option value="groceries">Grocery</ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slides id="slider"  pager="true">
+    <ion-slide>
+      <img src="assets/imgs/grocery.jpg">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/imgs/grocery.jpg">
+    </ion-slide>
+  </ion-slides>
+
+    <ion-card class="itemCards">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-5><img src="assets/imgs/grocery.jpg"></ion-col>
+            <ion-col col-7>
+              <div class="content">
+                <h2>sdfo sdf s df sd</h2>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
+
+<style>
+  .itemCards div.content{
+    padding: 5px;
+  }
+  .itemCards div.content h2{
+    font-weight: bold;
+  }
+  .itemCards ion-col{
+    padding: 0px;
+  }
+  .itemCards ion-card-content{
+    padding: 0px;
+  }
+  .itemCards ion-grid{
+    padding: 0px;
+  }
+  .itemCards img{
+    padding: 0px;
+    height: 100px!important;
+  }
+  .itemCards{
+    height: 150px;
+  }
+  #slider {
+    height: 200px;
+  }
+  #slider img  {
+    width: 100%;
+  }
+  #searchBox ion-select{
+    max-width: 100%;
+  }
+  #searchBox ion-col{
+    padding: 0px;
+  }
+  #searchBox button{
+    padding: 0px;
+  }
+  #searchBox{
+    padding: 0px;
+  }
+  #icon_location {
+    height: 20px;
+  }
+  #currentLocation{
+    font-size: 14px;
+  }
+</style>
